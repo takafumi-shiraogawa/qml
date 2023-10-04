@@ -39,7 +39,8 @@ if sys.platform == "darwin" and all(["gnu" not in arg for arg in sys.argv]):
 if any(["intelem" in arg for arg in sys.argv]):
     COMPILER_FLAGS = ["-xHost", "-O3", "-axAVX", "-qopenmp"]
     # LINKER_FLAGS = ["-liomp5", "-lpthread", "-lm", "-ldl"]
-    LINKER_FLAGS = ["-liomp5", "-lm", "-ldl"]
+    # LINKER_FLAGS = ["-liomp5", "-lm", "-ldl"]
+    LINKER_FLAGS = []
     MATH_LINKER_FLAGS = ["-L${MKLROOT}/lib", "-lmkl_rt"]
 
 
