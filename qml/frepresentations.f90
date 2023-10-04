@@ -32,7 +32,7 @@ subroutine get_indices(natoms, nuclear_charges, type1, n, type1_indices)
     integer, dimension(:), intent(in) :: nuclear_charges
 
     integer, intent(inout) :: n
-    integer, dimension(:), intent(inout) :: type1_indices
+    integer, intent(inout) :: type1_indices(:)
     integer :: j
 
     !$OMP PARALLEL DO REDUCTION(+:n)
