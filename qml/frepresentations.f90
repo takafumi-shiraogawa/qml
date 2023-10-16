@@ -635,16 +635,18 @@ subroutine fgenerate_eigenvalue_coulomb_matrix(atomic_charges, coordinates, nmax
 
     pair_distance_matrix(:,:) = 0.0d0
 
+    ! T.S. fix
     !$OMP PARALLEL DO PRIVATE(pair_norm)
-    do i = 1, natoms
+    do i = 1, nmax
         pair_norm = 0.5d0 * atomic_charges(i) ** 2.4d0
         pair_distance_matrix(i, i) = pair_norm
     enddo
     !$OMP END PARALLEL DO
 
+    ! T.S. fix
     !$OMP PARALLEL DO PRIVATE(pair_norm)
-    do i = 1, natoms
-        do j = i+1, natoms
+    do i = 1, nmax
+        do j = i+1, nmax
             pair_norm = atomic_charges(i) * atomic_charges(j) &
                 & / sqrt(sum((coordinates(j,:) - coordinates(i,:))**2))
 
